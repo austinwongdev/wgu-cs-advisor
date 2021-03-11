@@ -6,14 +6,14 @@ This chatbot advises students at Western Governors University on career choices 
 
 ## Visuals
 
-! [] (media/demo.gif)
+![Demonstration of chatbot](media/demo.gif)
 
 
 ## Installation
 
 Only sandbox mode is available under the free account plan on pandorabots.com. Thus, an installation manual and a web link to access the live chatbot is not provided. However, the chatbot is available under the internal directory on the pandorabots website listed as “WGU CS Advisor”:
 
-! [] (media/directory.png)
+![Screenshot of PandoraBots directory](media/directory.png)
 
 Additionally, the files can be imported from this repository after creating a PandoraBots account and navigating to the Code Editor for a new bot.
 
