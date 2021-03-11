@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- INITIATE JOB QUESTION -->
+	<category>
+    <pattern>XJOB</pattern>
+    <template>First, let's figure out your strengths in order to find a good career fit. <br/>
+    
+        <think><set name="count">0</set></think>
+        
+        <srai>XSTRENGTH</srai>
+    
+    </template>
+    </category>
+    
+    <!-- STRENGTH RESPONSES -->
+    
+    <category>
+        <pattern>XSTRENGTH</pattern>
+        <template>
+            
+            <condition name="count">
+                <li><value><bot name="strengths-map-size"/></value>
+                    We've reached the end of my recommendations. <break/>
+                    Would you like to go through this again?
+                </li>
+                <li>
+                    
+                    <!-- ask about strength -->
+                    Are you good at <map name="strengths"><get name="count"/></map>?
+                    
+                    <!-- increment count -->
+                    <think>
+                        <set name="count"><map name="successor"><get name="count"/></map></set>
+                    </think>
+                </li>
+                
+            </condition>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>^ WOULD YOU LIKE TO GO THROUGH THIS AGAIN</that>
+        <template>
+            <think><set name="count">0</set></think>
+            <srai>XSTRENGTH</srai>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>^ WOULD YOU LIKE TO GO THROUGH THIS AGAIN</that>
+        <template>
+            How else can I help you?
+        </template>
+    </category>
+    
+    <category>
+        <pattern>YES</pattern>
+        <that>^ ARE YOU GOOD AT <set>strengths</set></that>
+        <template>
+            I recommend applying for <map><name>strengthtocareer</name><thatstar index="2"/></map> positions.<break/>
+            <srai>XSTRENGTH</srai>
+            
+        </template>
+    </category>
+    
+    <category>
+        <pattern>NO</pattern>
+        <that>^ ARE YOU GOOD AT <set>strengths</set></that>
+        <template>
+            Hmm...<break/>
+            <srai>XSTRENGTH</srai>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <that>^ ARE YOU GOOD AT <set>strengths</set></that>
+        <template>
+            I don't understand. <break/>
+            Are you good at <thatstar index="2"/>?
+        </template>
+    </category>
+    
+    <!-- JOB QUESTIONS -->
+    
+    <category>
+        <pattern>JOB</pattern>
+        <template><srai>XJOB</srai></template>
+    </category>
+    
+    <category>
+            <pattern>WHAT * BE ^ JOB ^</pattern>
+    <template><srai>XJOB</srai></template>
+    </category>
+    
+    <category>
+        <pattern> WHAT ^ JOB SHOULD I *</pattern>
+        <template><srai>XJOB</srai></template>
+    </category>
+    
+    <category>
+        <pattern>^ NEED ^ JOB ^</pattern>
+        <template><srai>XJOB</srai></template>
+    </category>
+    
+    <category>
+        <pattern>^ HELP ^ JOB ^</pattern>
+        <template><srai>XJOB</srai></template>
+    </category>
+    
+    <!-- STRENGTH QUESTIONS -->
+    
+    <category>
+        <pattern>STRENGTH</pattern>
+        <template>
+            <think><set name="count">0</set></think>
+            <srai>XSTRENGTH</srai>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>WHAT ^ STRENGTH ^</pattern>
+        <template>
+            <srai>STRENGTH</srai>
+        </template>
+    </category>
+    
+    <!-- PLURAL TO SINGLULAR -->
+    <category>
+        <pattern>^ JOBS ^</pattern>
+        <template><srai><star/> JOB <star index="2"/></srai></template>
+    </category>
+    
+    <category>
+        <pattern>^ CAREERS ^</pattern>
+        <template><srai><star/> CAREER <star index="2"/></srai></template>
+    </category>
+    
+    <category>
+        <pattern>^ STRENGTHS ^</pattern>
+        <template>
+            <srai><star/> STRENGTH <star index="2"/></srai>
+        </template>
+    </category>
+    
+    <!-- SYNONYMS -->
+    <category>
+        <pattern>^ CAREER ^</pattern>
+        <template><srai><star/> JOB <star index="2"/></srai></template>
+    </category>
+    
+</aiml>

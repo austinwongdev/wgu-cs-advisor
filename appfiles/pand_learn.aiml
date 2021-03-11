@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!-- insert your AIML categories here -->
+
+<category>
+	<pattern>HELLO</pattern>
+	<template>Hello</template>
+</category>
+
+<category>
+    <pattern>HI</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>HEY</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>GOOD AFTERNOON</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>GOOD EVENING</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>GOOD MORNING</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>^ HOW ARE YOU</pattern>
+    <template>I am doing well. How are you?</template>
+</category>
+
+<category>
+	<pattern>*</pattern>
+	<that>HOW ARE YOU</that>
+	<template>How can I help you today?</template>
+</category>
+
+<category>
+	<pattern>*</pattern>
+	<that>HOW ^ CAN I HELP YOU ^</that>
+	<template>I'm not sure if I can help with that.</template>
+</category>
+
+</aiml>
